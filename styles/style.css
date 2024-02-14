@@ -161,16 +161,16 @@ footer {
 
 /* -----------------------------media--------------------------------------------- */
 
-@media (max-width: 991px) {
+/* @media (max-width: 991px) {
     .menu-burger__header {
-        position: relative; /* задаем относительное позиционирование */
-        width: 30px; /* определяем размеры блока */
+        position: relative; 
+        width: 30px; 
         height: 20px;
         display: block;
         margin-left: 10px;
-    }
+    } */
 
-    .menu-burger__header span, .menu-burger__header:after, .menu-burger__header:before{
+/*     .menu-burger__header span, .menu-burger__header:after, .menu-burger__header:before{
         height: 4px;
         width: 100%;
         position: absolute;
@@ -221,7 +221,7 @@ footer {
         font-size: 14px;
     }
      
-}
+} */
 
 #coins {
     display: inline-block;
