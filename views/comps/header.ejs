@@ -1,0 +1,29 @@
+<header>
+    <div class="container header__container">
+        <div class="menu-burger__header">
+            <span></span>
+        </div>
+        <nav class="header__nav">
+            <ul class="menu header__menu">
+                <li><a href="/" class="menu__item">Главная</a></li>
+                <li><a href="" class="menu__item">Товары</a></li>
+                <% if(userDB[0]) { %>
+                    <% if (userDB[0].rol != 'admin') { %>
+                        <li><a href="/exit-user" class="menu__item">Выйти</a></li>
+                        <li id="username"><a href="/profile"><%=userDB[0].name %></a></li>
+                        <li id="coins"><h6><a href="/profile"><%=userDB[0].coins %></a></h6></li>
+                    <% }else if (userDB[0].rol === 'admin') { %>
+                        <li><a href="/admin" class="menu__item">Адмим Панель</a></li>
+                        <li><a href="/exit-user" class="menu__item">Выйти</a></li>
+                        <li id="username"><a href="/profile"><%=userDB[0].name %></a></li>
+                        <li id="coins"><h6><a href="/profile"><%=userDB[0].coins %></a></h6></li>
+                        
+                        <% } %>
+                <% }else { %>
+                    <li><a href="/login" class="menu__item">Вход</a></li>
+                    <li><a href="/reg" class="menu__item">Регистрация</a></li>
+                <% } %>
+            </ul>
+        </nav>
+    </div>
+</header>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/bootstrap.min.css">
+    <link rel="stylesheet" href="/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="page">
+        <header class = "header">
+            <div class="container header__container">
+                <div class="menu-burger__header">
+                    <span></span>
+                </div>
+                <nav class="header__nav">
+                    <ul class="menu header__menu">
+                        <li><a href="/admin/events" class="menu__item">Events</a></li>
+                        <li><a href="/" class="menu__item">Главная</a></li>
+                        <li><a href="" class="menu__item">Товары</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <div class="content">
+            <div class="container">
+                    <div class="event-events-admin">
+                        <% if (events.length != 0) { %>
+                            <% events.forEach(event => { %>
+                                <div class="event-event-admin">
+                                    <h2>UserName: <%=event.UserName %></h2>
+                                    <h3>UserId: <%=event.idUser %></h3>
+                                    <button onclick="addUserCoins('<%=event.idEvent%>', '<%=event.idUser%>', '<%=event._id%>')">Участвовал</button>
+                                </div>
+                            <% }) %>
+                        <% }else { %>
+                            <h2 style="color: red;">Not Events</h2>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <div class="container" style="margin: 0px 5%;">
+                    <h2>Footer</h2>  
+            </div>
+        </footer>
+    </div>
+    <script>
+        function addUserCoins(idEvent, idUser, id) {
+            fetch('/admin/event/addUserCoins?idEvent=' + idEvent + '&idUser=' + idUser + '&id=' + id)
+                .then(() => {
+                    location.reload()
+                })
+        }
+    </script>
+</body>
+</html>

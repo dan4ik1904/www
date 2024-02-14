@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/bootstrap.min.css">
+    <link rel="stylesheet" href="/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="page">
+        <header class = "header">
+            <div class="container header__container">
+                <div class="menu-burger__header">
+                    <span></span>
+                </div>
+                <nav class="header__nav">
+                    <ul class="menu header__menu">
+                        <li><a href="/admin/events" class="menu__item">Events</a></li>
+                        <li><a href="/" class="menu__item">Главная</a></li>
+                        <li><a href="" class="menu__item">Товары</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <div class="content">
+            <div class="container">
+                <div class="form-admin">
+                    <h2>Добавить новый Event</h2>
+                    <form enctype="multipart/form-data" action="/admin/" method="post">
+                        <input type="file" name="photo" accept=".jpg,.jpeg,.png">
+                        <input type="text" placeholder="name" name="name">
+                        <input type="text" placeholder="about" name="about">
+                        <input type="text" placeholder="price" name="price">
+                        <input type="submit">
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <div class="container" style="margin: 0px 5%;">
+                    <h2>Footer</h2>  
+            </div>
+        </footer>
+    </div>
+    <script>
+    </script>
+</body>
+</html>

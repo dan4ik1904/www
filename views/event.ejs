@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/bootstrap.min.css">
+    <link rel="stylesheet" href="/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="page">
+        <%- include('./comps/header.ejs') %>
+        <div class="content">
+            <div class="one-event">
+                <div class="one-event__wraper">
+                    <h1><%=event.name %></h1>
+                    <div class="img-event">
+                        <img src="/events/<%=event._id%>.<%=event.img %>" alt="">
+                    </div>
+                    <h3><%=event.about %></h3>
+                    <div class="button">
+                        <% if (userDB.length !== 0) {%>
+                            <% if(userDB[0]._id == event.creater) { %>
+                                <button onclick="openPopupEvent('<%=event._id%>')">Редактировать</button>
+                            <% }else { %>
+                                <button>Участвовать</button>
+                            <% } %>
+                        <% }else { %>
+                            <button>Участвовать</button>
+                        <% } %>
+                    </div>
+                </div>
+                
+            </div>
+            
+        </div>
+    </div>
+    <div id="popup" class="popup">
+        <a onclick="closePopupEvent()" class="popup__area"></a>
+        <div class="popup__body">
+            <div class="popup__content">
+                <a onclick="deleteEvent()">Удалить</a>
+                <a onclick="closePopupEvent()" class="popup__close">X</a>
+                <form action="/api/edit/event/" method="post">
+                    <input type="text" id="nameEditEvent" name="nameEvent">
+                    <textarea id="aboutEditEvent" name="aboutEvent"></textarea>
+                    <input type="submit" id="editEventBtn" value="Редактировать">
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="/redactEvent.js"></script>
+</body>
+</html>

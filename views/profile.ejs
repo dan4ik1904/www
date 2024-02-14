@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/bootstrap.min.css">
+    <link rel="stylesheet" href="/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="page">
+        <header class = "header">
+            <div class="container header__container">
+                <div class="menu-burger__header">
+                    <span></span>
+                </div>
+                <nav class="header__nav">
+                    <ul class="menu header__menu">
+                        <li><a href="/" class="menu__item">Главная</a></li>
+                        <li><a href="" class="menu__item">Товары</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <div class="content">
+            <div class="container">
+                <div class="about-user">
+                    <div class="username">
+                        <h3>Имя: <%=user.name %></h3>
+                    </div>
+                    <div class="user-coins">
+                        <h3>Манеты: <%=user.coins %></h3>
+                    </div>
+                </div>
+                <div class="events-prpfile">
+                    <div class="Con">
+                        <h1>Не завершённые:</h1>
+                        <% eventsCon.forEach(event => { %>
+                            <h4><%=event.name %></h4><br>
+                        <% }) %>
+                    </div>
+                    <div class="Connt">
+                        <h1>Зарешённые:</h1>
+                        <% eventsNotCon.forEach(event => { %>
+                            <h4><%=event.name %></h4><br>
+                        <% }) %>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <div class="container" style="margin: 0px 5%;">
+                    <h2>Footer</h2>  
+            </div>
+        </footer>
+        
+</body>
+</html>

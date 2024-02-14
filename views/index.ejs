@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/bootstrap.min.css">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="page">
+        <%- include('./comps/header.ejs') %>
+        <div class="content">
+            <div class="form-chall">
+                <% if(userDB[0]) {%>
+                    <form enctype="multipart/form-data" method="post" action="/mysor-img/upload/">
+                        <input type="file" name="file" id="file">
+                        <input type="text" placeholder="Name" name="name" id="nameSendTg">
+                        <input type="text" placeholder="password" name="text" id="textSendTg">
+                        <input type="submit" id="sendChall">
+                    </form>
+                <% }else { %>
+                    <input type="file" name="file" id="file">
+                    <input type="text" placeholder="Name" name="name" id="nameSendTg">
+                    <input type="text" placeholder="password" name="text" id="textSendTg">
+                    <a href="/reg"><input type="submit"></a>
+                <% } %>
+            </div>
+
+            <div class="events container">
+                <% events.forEach((event) => { %>
+                    <a href="/event/<%=event._id%>">
+                        <div class="event">
+                            <img src="events/<%=event._id%>.<%=event.img %>" alt="">
+                            <h3><%= event.name %></h3>
+                            <% const about = event.about %>
+                            <% if (about.length > 40) { %>
+                                <%=about.substring(0, 40) + "..." %>
+                            <% }else { %>
+                                <%=about %>
+                            <% } %>
+                            
+                            
+                            <h6><%=event.price %> монет</h6>
+                            <% if (userDB[0]) { %>
+                                <% if (userDB[0]._id == event.creater) {%>
+                                    <a href="/event/<%=event._id %>"><button id="btn-mysor">Просмотр</button></a>
+                                <% }else { %>
+                                    <a onclick="addEventToUser('<%=event._id%>', '<%=userDB[0].id%>')"><button id="btn-mysor">Участвовать</button></a>
+                                <% } %>
+    
+                                    
+                            <% }else { %>
+                                <a href="/reg"><button>Участвовать</button></a>
+                            <% } %>
+                        </div>
+                    <a/>
+                <% }) %>
+            </div>
+        </div>
+
+        <footer>
+            <div class="container" style="margin: 0px 5%;">
+                    <h2>Footer</h2>  
+            </div>
+        </footer>
+    </div>
+
+
+    
+    <!-- <script src="js/header.js"></script> -->
+
+</body>
+
+<script>
+    function addEventToUser(eventCreaterId, userId) {
+       fetch("/addEventToUser?userId=" + userId + '&eventCreaterId=' + eventCreaterId)
+    }
+</script>
+<script src="/sendTG.js"></script>
+<script src="/redactEvent.js"></script>
+</html>
